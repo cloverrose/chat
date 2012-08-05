@@ -21,7 +21,7 @@ $ sudo a2enmod rewrite
 $ sudo apachectl restart
 
 ## Finally I set up database
-see db_info.php and
+see db_info.php (http://github.com/cloverrose/chat/blob/42092ebe8fb72279352d29cfd9e345d442d3c96f/db_info.php) and
 
 $ mysql -u <username> -p
 <password>
