@@ -1,23 +1,14 @@
-<html>
-  <head>
-    <title>Speak</title>
-  </head>
-  <body>
-    <?php
-    include "db_info.php";
-    if($_POST["words"]){
-      $nick = $_COOKIE["nick"];
-      $words = $_POST["words"];
-      $link = mysql_connect($host, $username, $password);
-      mysql_select_db($dbname, $link);
-      $sql = "INSERT INTO chat(nick, words) values ('$nick', '$words');";
-      mysql_query($sql, $link);
-      mysql_close($link);
-    }
-    ?>
-    <form action="speak.php" method="POST" target="_self">
-      <input type="text" name="words" cols="20">
-      <input type="submit" value="Speak">
-    </form>
-  </body>
-</html>
+<?php
+if($_POST["words"]){
+  include "Chat.php";
+  $chat = new Chat();
+  $nick = $_COOKIE["nick"];
+  $words = $_POST["words"];
+  $chat->insert($nick, $words);
+}
+require_once('Smarty.class.php');
+$smarty = new Smarty();
+$smarty->template_dir = './templates/';
+$smarty->compile_dir = './templates_c/';
+$smarty->display('speak.tpl');
+?>
