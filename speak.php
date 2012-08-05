@@ -3,7 +3,7 @@
     <title>Speak</title>
   </head>
   <body>
-    <?
+    <?php
     include "db_info.php";
     if($_POST["words"]){
       $nick = $_COOKIE["nick"];

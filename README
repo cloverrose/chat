@@ -31,3 +31,39 @@ $ mysql -u <username> -p
 > nick CHAR(10) NOT NULL,
 > words CHAR(150)
 > );
+
+
+3. install Smarty and setup
+---------------------------
+http://d.hatena.ne.jp/NiwaHirokazu/20090425/1240671703
+
+$ sudo apt-get install smarty
+where is smarty installed as
+$ dpkg -L smarty
+and find the directory
+/usr/share/php/smarty/
+
+
+setup /etc/php5/apache2/php.ini as
+;;;;;;;;;;;;;;;;;;;;;;;;;
+; Paths and Directories ;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; UNIX: "/path1:/path2"
+include_path = ".:/usr/share/php:/usr/share/php/smarty/"
+
+similarly set up /etc/php5/cli/php.ini as
+;;;;;;;;;;;;;;;;;;;;;;;;;
+; Paths and Directories ;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; UNIX: "/path1:/path2"
+include_path = ".:/usr/share/php:/usr/share/php/smarty/"
+;
+
+restart apache2
+$sudo apachectl restart
+
+check whether smarty works as
+$ php -f smartytest.php
+and if output nothing, it is OK.
