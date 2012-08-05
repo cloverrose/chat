@@ -1,0 +1,33 @@
+simple chat system
+------------------
+
+1. I read following web site.
+----------------------------
+http://www.webdesignlibrary.jp/2006/12/php_mysql_chat_sys.php
+http://www.webdesignlibrary.jp/2006/12/php_mysql_chat_sys.php
+
+2. set up
+----------
+## I first install followings
+emacs23
+apache2
+mysql-server
+libapache2-mod-auth-mysql
+libapache2-mode-php5
+php5-mysql
+
+## Second I enable apache module rewrite as
+$ sudo a2enmod rewrite
+$ sudo apachectl restart
+
+## Finally I set up database
+see db_info.php and
+
+$ mysql -u <username> -p
+<password>
+> create database <dbname>;
+> use <dbname>;
+> create table chat(
+> nick CHAR(10) NOT NULL,
+> words CHAR(150)
+> );
